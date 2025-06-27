@@ -46,10 +46,9 @@ export default <T extends PatchType>(patchType: T) =>
 
         // @ts-expect-error this is manual minification. if you don't like it, kick rocks.
         get: (target, prop, receiver, resolvedProp) =>
-          ((resolvedProp = Reflect.get(target, prop, receiver)),
-          (typeof resolvedProp)[0] == "f")
-            ? resolvedProp.bind(origFunc)
-            : resolvedProp,
+        (resolvedProp = Reflect.get(target, prop, receiver), "apply" == prop ? resolvedProp : (typeof resolvedProp)[0] == "f"
+          ? resolvedProp.bind(origFunc)
+          : resolvedProp)
       });
 
       const runHook: any = (ctxt: any, args: unknown[], construct: boolean) =>
