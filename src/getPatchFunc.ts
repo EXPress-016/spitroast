@@ -19,7 +19,8 @@ export default <T extends PatchType>(patchType: T) =>
     funcParent: Parent,
     callback: PatchTypeToCallbackMap<Parent[Name]>[T],
     oneTime = false,
-    excludeBinds: string[] = []
+    excludeBinds: string[] = [],
+    includeBinds?: string[]
   ) => {
     let origFunc = funcParent[funcName];
 
@@ -47,7 +48,7 @@ export default <T extends PatchType>(patchType: T) =>
 
         // @ts-expect-error this is manual minification. if you don't like it, kick rocks.
         get: (target, prop, receiver, resolvedProp) =>
-        (resolvedProp = Reflect.get(target, prop, receiver), excludeBinds.includes(prop) ? resolvedProp : (typeof resolvedProp)[0] == "f"
+        (resolvedProp = Reflect.get(target, prop, receiver), (includeBinds?.length && !includeBinds.includes(prop)) ? resolvedProp : excludeBinds.includes(prop) ? resolvedProp : (typeof resolvedProp)[0] == "f"
           ? resolvedProp.bind(origFunc)
           : resolvedProp)
       });
