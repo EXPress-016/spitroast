@@ -1,6 +1,10 @@
 {
-	"include": ["src/**/*.ts"],
+	"include": [
+		"src/**/*.ts"
+	],
 	"compilerOptions": {
+		"strict": true,
+		"strictNullChecks": true,
 		"target": "ES2022",
 		"module": "ES2022",
 		"moduleResolution": "Bundler",
