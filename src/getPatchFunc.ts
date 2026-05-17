@@ -4,10 +4,10 @@
 
 import hook from "./hook";
 import {
-  AnyObject,
-  KeysWithFunctionValues,
-  PatchType,
-  PatchTypeToCallbackMap,
+  type AnyObject,
+  type KeysWithFunctionValues,
+  type PatchType,
+  type PatchTypeToCallbackMap,
   patchedFunctions,
 } from "./shared";
 import { unpatch } from "./unpatch";

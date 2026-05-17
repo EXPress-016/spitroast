@@ -35,7 +35,7 @@ export type KeysWithFunctionValues<T extends AnyObject> = {
 export type AnyObject = Record<any, any>;
 
 export let patchedFunctions: WeakMap<AnyFunction, Patch>;
-export let resetPatches = () =>
+export const resetPatches = () =>
   (patchedFunctions = new WeakMap<AnyFunction, Patch>());
 
 // Manual minification is funny

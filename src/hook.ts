@@ -1,5 +1,5 @@
 // calls relevant patches and returns the final result
-import { AnyFunction, patchedFunctions } from "./shared";
+import { type AnyFunction, patchedFunctions } from "./shared";
 
 export default function (
   patchedFunc: AnyFunction,

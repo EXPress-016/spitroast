@@ -1,4 +1,4 @@
-import { PatchType, Patch, patchTypes, patchedFunctions } from "./shared";
+import { type PatchType, type Patch, patchTypes, patchedFunctions } from "./shared";
 
 export function unpatch(patchRef: WeakRef<Patch>, hookId: symbol, type: PatchType) {
   const patch = patchRef.deref();
